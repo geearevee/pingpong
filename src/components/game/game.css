@@ -1,0 +1,85 @@
+#board{
+    background-color: rgb(96, 216, 90);
+    height: 400px;
+    width: 700px;
+    position: relative;
+}
+
+#board::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+    background-color: transparent;
+    height: 300px;
+    width: 300px;
+    border: rgba(240, 248, 255, 0.591) solid 20px;
+    border-radius: 50%;
+}
+
+#goal-left{
+    position: absolute;
+    background-color: rgb(230, 141, 141);
+    height: 150px;
+    width: 10px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+#goal-right{
+    position: absolute;
+    background-color: rgb(117, 134, 232);
+    height: 150px;
+    width: 10px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.player{
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+}
+
+#ball{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+   
+}
+
+#player-one{
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 100px;
+}
+#player-two{
+    background-color: blueviolet;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    right: 100px;
+}
