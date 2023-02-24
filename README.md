@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## project preview images
 
-<iframe src="https://giphy.com/embed/uz3yDYEO33cfav2Ea7" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/uz3yDYEO33cfav2Ea7">via GIPHY</a></p>
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTkzMDNjM2I1ZGE1NmVjZGFmZWE4NjFmYWNkMzJlNjRjMDUxMmRlOSZjdD1n/uz3yDYEO33cfav2Ea7/giphy.gif"/>
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
