@@ -3,78 +3,133 @@ import "./game.css";
 import Player from "./Player";
 import Ball from "./Ball";
 const Game = () => {
-    const [playerOne, setPlayerOne] = useState({ x: 0, y: 0 });
-    const [arrowKeysStatus, setArrowKeysStatus] = useState([
-        false,
-        false,
-        false,
-        false,
-    ]);
-    const [asdfKeysStatus, setasdfKeysStatus] = useState([
-        false,
-        false,
-        false,
-        false,
-    ]);
+    const [arrowKeysStatus, setArrowKeysStatus] = useState({
+        top: false,
+        bottom: false,
+        left: false,
+        right: false,
+    });
     // const [playerTwo, setPlayerTwo] = useState({x : 0,y : 0});
-    function movePlayer(event) {
+    function keyUPs(event) {
         event.preventDefault();
+        console.log("firing in key down");
         if (event.key === "ArrowUp") {
-            setPlayerOne((state) => {
-                return { ...state, y: Number(state["y"]) - 5 };
-            });
-        }
-        if (event.key === "ArrowUp" && event.key === "ArrowRight") {
-            console.log("working");
+            if (arrowKeysStatus.top === true) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        top: true,
+                    };
+                });
+            }
         }
         if (event.key === "ArrowDown") {
-            setPlayerOne((state) => {
-                return { ...state, y: Number(state["y"]) + 5 };
-            });
-            console.log("arrow down");
+            if (arrowKeysStatus.bottom === true) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        bottom: true,
+                    };
+                });
+            }
         }
         if (event.key === "ArrowLeft") {
-            setPlayerOne((state) => {
-                return { ...state, x: Number(state["x"]) - 5 };
-            });
-            console.log("arrow left");
+            if (arrowKeysStatus.left === true) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        left: true,
+                    };
+                });
+            }
         }
         if (event.key === "ArrowRight") {
-            setPlayerOne((state) => {
-                return { ...state, x: Number(state["x"]) + 5 };
-            });
-            console.log("arrow right");
+            if (arrowKeysStatus.right === true) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        right: true,
+                    };
+                });
+            }
         }
-
-        if (event.key === "w") {
-            console.log(event.key);
+    }
+    function keyDowns(event) {
+        event.preventDefault();
+        console.log("firing in key down");
+        if (event.key === "ArrowUp") {
+            if (arrowKeysStatus.top === false) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        top: true,
+                    };
+                });
+            }
         }
-        if (event.key === "s") {
-            console.log(event.key);
+        if (event.key === "ArrowDown") {
+            if (arrowKeysStatus.bottom === false) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        bottom: true,
+                    };
+                });
+            }
         }
-        if (event.key === "a") {
-            console.log(event.key);
+        if (event.key === "ArrowLeft") {
+            if (arrowKeysStatus.left === false) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        left: true,
+                    };
+                });
+            }
         }
-        if (event.key === "d") {
-            console.log(event.key);
+        if (event.key === "ArrowRight") {
+            if (arrowKeysStatus.right === false) {
+                setArrowKeysStatus((keyState) => {
+                    return {
+                        ...keyState,
+                        right: true,
+                    };
+                });
+            }
         }
     }
     useEffect(() => {
-        window.addEventListener("keydown", movePlayer, false);
-        window.addEventListener("keyup", movePlayer, false);
+        window.addEventListener("keydown", keyDowns, false);
+        window.addEventListener("keyup", keyUPs, false);
+        let { top, bottom, left, right } = arrowKeysStatus;
+        console.log("will move or not");
+        // console.log(top, bottom, left, right);
+        if (top || bottom || left || right) {
+            console.log("will move in");
+            if (top) {
+                console.log("top");
+            }
+            if (bottom) {
+                console.log("bottom");
+            }
+            if (left) {
+                console.log("left");
+            }
+            if (right) {
+                console.log("right");
+            }
+        }
+        // console.log(arrowKeysStatus);
         return function () {
-            window.removeEventListener("keydown", movePlayer, false);
-            window.addEventListener("keyup", movePlayer, false);
+            window.removeEventListener("keydown", keyDowns, false);
+            window.removeEventListener("keyup", keyUPs, false);
         };
-    }, []);
+    }, [keyDowns, keyUPs]);
     return (
         <>
-            <div id="board" onKeyUp={movePlayer}>
+            <div id="board">
                 <div id="goal-left"></div>
-                <Player
-                    position={{ x: playerOne.x, y: playerOne.y }}
-                    player={"one"}
-                />
+                <Player position={{ x: 0, y: 0 }} player={"one"} />
                 <Ball />
                 {/* <Player style={{}} player={"two"} /> */}
                 <div id="goal-right"></div>
