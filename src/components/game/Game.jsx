@@ -12,13 +12,13 @@ const Game = () => {
     // const [playerTwo, setPlayerTwo] = useState({x : 0,y : 0});
     function keyUPs(event) {
         event.preventDefault();
-        console.log("firing in key down");
+        console.log("Key up is firing");
         if (event.key === "ArrowUp") {
             if (arrowKeysStatus.top === true) {
                 setArrowKeysStatus((keyState) => {
                     return {
                         ...keyState,
-                        top: true,
+                        top: false,
                     };
                 });
             }
@@ -28,7 +28,7 @@ const Game = () => {
                 setArrowKeysStatus((keyState) => {
                     return {
                         ...keyState,
-                        bottom: true,
+                        bottom: false,
                     };
                 });
             }
@@ -38,7 +38,7 @@ const Game = () => {
                 setArrowKeysStatus((keyState) => {
                     return {
                         ...keyState,
-                        left: true,
+                        left: false,
                     };
                 });
             }
@@ -48,7 +48,7 @@ const Game = () => {
                 setArrowKeysStatus((keyState) => {
                     return {
                         ...keyState,
-                        right: true,
+                        right: false,
                     };
                 });
             }
@@ -103,22 +103,22 @@ const Game = () => {
         window.addEventListener("keyup", keyUPs, false);
         let { top, bottom, left, right } = arrowKeysStatus;
         console.log("will move or not");
-        // console.log(top, bottom, left, right);
-        if (top || bottom || left || right) {
-            console.log("will move in");
-            if (top) {
-                console.log("top");
-            }
-            if (bottom) {
-                console.log("bottom");
-            }
-            if (left) {
-                console.log("left");
-            }
-            if (right) {
-                console.log("right");
-            }
-        }
+        console.log(top, bottom, left, right);
+        // if (top || bottom || left || right) {
+        //     console.log("will move in");
+        //     if (top) {
+        //         console.log("top");
+        //     }
+        //     if (bottom) {
+        //         console.log("bottom");
+        //     }
+        //     if (left) {
+        //         console.log("left");
+        //     }
+        //     if (right) {
+        //         console.log("right");
+        //     }
+        // }
         // console.log(arrowKeysStatus);
         return function () {
             window.removeEventListener("keydown", keyDowns, false);
