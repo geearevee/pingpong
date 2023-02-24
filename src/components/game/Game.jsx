@@ -19,7 +19,9 @@ const Game = () => {
     const [playerTwo, setPlayerTwo] = useState({ x: 0, y: 0 });
     function keyUPs(event) {
         event.preventDefault();
-        console.log("Key up is firing");
+        /*
+         * Player one
+         **/
         if (event.key === "ArrowUp") {
             if (arrowKeysStatus.top === true) {
                 setArrowKeysStatus((keyState) => {
@@ -60,8 +62,9 @@ const Game = () => {
                 });
             }
         }
-        // player two movement
-        console.log(event.key);
+        /*
+         * Player two
+         **/
         if (event.key === "w") {
             if (asdfKeysStatus.top === true) {
                 setAsdfKeysStatus((keyState) => {
@@ -105,7 +108,9 @@ const Game = () => {
     }
     function keyDowns(event) {
         event.preventDefault();
-        console.log("firing in key down");
+        /*
+         * Player one
+         **/
         if (event.key === "ArrowUp") {
             if (arrowKeysStatus.top === false) {
                 setArrowKeysStatus((keyState) => {
@@ -146,7 +151,9 @@ const Game = () => {
                 });
             }
         }
-        // player two movements
+        /*
+         * Player two
+         **/
         if (event.key === "w") {
             if (asdfKeysStatus.top === false) {
                 setAsdfKeysStatus((keyState) => {
@@ -191,33 +198,41 @@ const Game = () => {
     useEffect(() => {
         window.addEventListener("keydown", keyDowns, false);
         window.addEventListener("keyup", keyUPs, false);
+        /*
+         * Player one
+         **/
         let {
             top: playerOneTop,
             bottom: playerOneBottom,
             left: playerOneLeft,
             right: playerOneRight,
         } = arrowKeysStatus;
+        /*
+         * Player two
+         **/
         let {
             top: playerTwoTop,
             bottom: playerTwoBottom,
             left: playerTwoLeft,
             right: playerTwoRight,
         } = asdfKeysStatus;
-        console.log("will move or not");
-        console.log(
-            playerOneTop,
-            playerOneBottom,
-            playerOneLeft,
-            playerOneRight
-        );
+        /*
+         * Player one
+         **/
         let playerOneMoveUp;
         let playerOneMoveDown;
         let playerOneMoveLeft;
         let playerOneMoveRight;
+        /*
+         * Player two
+         **/
         let playerTwoMoveUp;
         let playerTwoMoveDown;
         let playerTwoMoveLeft;
         let playerTwoMoveRight;
+        /*
+         * Player one
+         **/
         if (playerOneTop) {
             playerOneMoveUp = setInterval(() => {
                 setPlayerTwo((position) => {
@@ -246,7 +261,9 @@ const Game = () => {
                 });
             }, 20);
         }
-        // player Two movements
+        /*
+         * Player two
+         **/
         if (playerTwoTop) {
             playerTwoMoveUp = setInterval(() => {
                 setPlayerOne((position) => {
@@ -278,10 +295,16 @@ const Game = () => {
         return function () {
             window.removeEventListener("keydown", keyDowns, false);
             window.removeEventListener("keyup", keyUPs, false);
+            /*
+             * Player one
+             **/
             clearInterval(playerOneMoveUp);
             clearInterval(playerOneMoveDown);
             clearInterval(playerOneMoveLeft);
             clearInterval(playerOneMoveRight);
+            /*
+             * Player two
+             **/
             clearInterval(playerTwoMoveUp);
             clearInterval(playerTwoMoveDown);
             clearInterval(playerTwoMoveLeft);
